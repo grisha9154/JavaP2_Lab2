@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="temp.xhtml">
+    <ui:define name="content">
+<f:view>
+    <h:outputLabel value="Вечер в хату: "/>
+    <h:outputLabel value="#{login.login}"/>
+    <br/>
+    <h:form>
+        <h:outputLabel value="Ведите сумму"/>
+        <h:message for="sum" errorStyle="color:red; display:block" />
+        <h:inputText id="sum" value="#{cardController.paySum}">
+            <f:converter converterId="ConvEvro"/>
+            <f:validator validatorId="absValid"/>
+        </h:inputText>
+        <h:commandButton action="#{cardController.pay(login.login,login.sum)}" value="Оправить подогрев"/>
+    </h:form>
+    <br/>
+</f:view>
+    </ui:define>
+</ui:composition>
+</html>
